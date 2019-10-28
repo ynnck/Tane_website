@@ -1,22 +1,27 @@
 .App {
-  text-align: center;
+    font-family: courier;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 8vmin;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 .App-link {
   color: #09d3ac;
+}
+.Adress{
+    list-style: none;
+}
+.Bold{
+    font-weight: bold;
 }
