@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import CoffeeMap from './map.js';
+import coffeeList from './list.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faFacebook,
@@ -11,15 +12,14 @@ import {
 
 function App() {
     return (
-
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
                 <p>Tane roasters collective</p>
             </header>
+            
             <CoffeeMap />  
             <footer className="App-footer">
-                <div id="GeneralInfo">
+                <div class="General-info">
                     <ul class="Adress">
                         <li class="Bold">Tane roasters collective</li>
                         <li>Naamsestraat49</li>

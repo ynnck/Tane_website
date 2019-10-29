@@ -7,8 +7,6 @@ class Map extends React.Component {
         countriesCodesArray: [],
         countriesNamesArray: [],
         data: {},
-        title: "",
-        titleSet: false,
         color: "#48aeef"
     };
 
@@ -55,22 +53,29 @@ class Map extends React.Component {
             map={"world_mill"}
             backgroundColor="transparent" // change it to ocean blue: #0077be
             zoomOnScroll={false}
+            zoomAnimate={false}
+            focusOn={{
+                x: 0.5,
+                y: 0.65,
+                scale: 2.5,
+                animate: true
+                }}
             containerStyle={{
-                width: "100%",
-                height: "520px"
+                width: "100vw",
+                height: "50vh"
             }}
             onRegionClick={this.handleClick} // gets the country code
             containerClassName="map"
             regionStyle={{
                 initial: {
-                    fill: "#e4e4e4",
+                    fill: "var(--bgColorLight)",
                         "fill-opacity": 0.9,
                         stroke: "none",
                         "stroke-width": 0,
                         "stroke-opacity": 0
                 },
                     selected: {
-                        fill: "#2938bc" // color for the clicked country
+                        fill: "var(--fontColor)" // color for the clicked country
                     },
             }}
             regionsSelectable={false}
@@ -78,7 +83,7 @@ class Map extends React.Component {
                 regions: [
                     {
                         values: this.state.data, // this is the map data
-                        scale: ["#146804", color], // your color game's here
+                        scale: ["var(--fontColor)", color], // your color game's here
                         normalizeFunction: "polynomial"
                     }
                 ]

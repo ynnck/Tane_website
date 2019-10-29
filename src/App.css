@@ -1,23 +1,35 @@
-.App {
-    font-family: courier;
+body {
+    --fontColor: #da4032;
+    --bgColorDark:  #375d52;
+    --bgColorLight: #63A895;
+    font-family: georgia;
+    background-color: var(--bgColorDark);
+    color: var(--fontColor);
 }
-
+.App{
+    margin: 1vmin 1vmin 1vmin 1vmin;
+}
 .App-logo {
   height: 8vmin;
 }
-
 .App-header {
-  background-color: #282c34;
   min-height: 10vh;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(10px + 3vmin);
+}
+.General-info{
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  font-size: calc(10px + 1vmin);
 }
 
-.App-link {
-  color: #09d3ac;
+#socialMediaButtons{
+  display: flex;
+  justify-content: space-between;
+  
 }
 .Adress{
     list-style: none;
