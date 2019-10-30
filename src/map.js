@@ -11,51 +11,25 @@ class Map extends React.Component {
         color: "#da4032"
     };
 
-    handleClick = (e, countryCode) => {
-        const { countriesCodesArray } = this.state;
-        // console.log(countryCode);
-        if (countriesCodesArray.indexOf(countryCode) === -1) {
-            this.setState(
-                {
-                    countriesCodesArray: [...countriesCodesArray, countryCode]
-                },
-                () => this.getCountriesNamesList()
-            );
-        }
-    };
-
-    getCountriesNamesList = () => {
-        const { countriesCodesArray } = this.state;
-        const list = countriesCodesArray.map(code => getName(code));
-        this.setState(
-            {
-                countriesNamesArray: list
-            },
-            () => this.makeMapDataStructure()
-        );
-    };
-
-    makeMapDataStructure = () => {
-	const { countriesCodesArray } = this.state;
-	console.log(this.state);
-        let obj = {};
-        //{CN: 5, MX: 5, TX: 5}
-        countriesCodesArray.forEach(countryCode => (obj[countryCode] = 5));
-        this.setState({
-            data: obj
-        });
-    };
-
     render() {
 	    // console.log(this.state.data);
 	const { countriesNamesArray, color } = this.state;
         return (
-            <div>
+	    <div>
+		    <div class="coffeeListDiv">Our coffees at the moment:<ul class="coffeeListUl"> 
+            	{countriesNamesArray.map((country, i) => (
+               	<li key={i}>{country}</li>
+		))}</ul>
+            </div>
+
             <VectorMap
             map={"world_mill"}
             backgroundColor="transparent" // change it to ocean blue: #0077be
             zoomOnScroll={false}
-            zoomAnimate={false}
+	    zoomAnimate={false}
+	    regionsSelectable={false}
+	    panOnDrag={false}
+	    zoomButtons={false}
             focusOn={{
                 x: 0.5,
                 y: 0.65,
@@ -66,7 +40,6 @@ class Map extends React.Component {
                 width: "100vw",
                 height: "50vh"
             }}
-            onRegionClick={this.handleClick} // gets the country code
             containerClassName="map"
             regionStyle={{
                 initial: {
@@ -77,28 +50,12 @@ class Map extends React.Component {
                         "stroke-opacity": 0
                 },
                     selected: {
-                        fill:  "#da4032" // color for the clicked country
+                        fill:  "var(--fontColor)" // color for the clicked country
                     },
             }}
-            regionsSelectable={false}
-	    series={
-		{
-                regions: [
-                    {
-                        values: this.state.data, // this is the map data
-                        scale: ["#da4032", color], // your color game's here
-                        normalizeFunction: "polynomial"
-                    }
-                ]
-		}}
-	    
+	    selectedRegions={[... new Set(data.map(item => getCode(item.country)))]}
             />
-            <div>
-            {countriesNamesArray.map((country, i) => (
-                <div key={i}>{country}</div>
-            ))}
-            </div>
-            </div>
+                       </div>
         );
     }
 }
