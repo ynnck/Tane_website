@@ -19,18 +19,10 @@ function App() {
             
             <CoffeeMap />  
             <footer className="App-footer">
-                <div class="General-info">
-                    <ul class="Adress">
-                        <li class="Bold">Tane roasters collective</li>
-                        <li>Naamsestraat49</li>
-                        <li>3000 Leuven</li>
-                        <li>+3216/85.08.97</li>
-                    </ul>
-                    <div id="socialMediaButtons">
+                                        <div id="socialMediaButtons">
                         <a href="https://www.youtube.com/" className="social"><FontAwesomeIcon icon={faFacebook} size="2x" /></a>
                         <a href="https://www.twitter.com/" className="social"><FontAwesomeIcon icon={faTwitter} size="2x" /></a>
                         <a href="https://www.instagram.com/" className="social"><FontAwesomeIcon icon={faInstagram} size="2x" /></a>
-                    </div>
                 </div>
             </footer>
         </div>

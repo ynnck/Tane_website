@@ -1,13 +1,14 @@
 import React from "react";
 import { VectorMap } from "react-jvectormap";
-const { getName } = require("country-list");
+import data from "./data/coffee.json";
+const { getName, getCode } = require("country-list");
 
 class Map extends React.Component {
     state = {
-        countriesCodesArray: [],
-        countriesNamesArray: [],
+	countriesCodesArray: [... new Set(data.map(item => getCode(item.country)))],
+        countriesNamesArray: [... new Set(data.map(item => item.country))],
         data: {},
-        color: "#48aeef"
+        color: "#da4032"
     };
 
     handleClick = (e, countryCode) => {
@@ -35,7 +36,8 @@ class Map extends React.Component {
     };
 
     makeMapDataStructure = () => {
-        const { countriesCodesArray } = this.state;
+	const { countriesCodesArray } = this.state;
+	console.log(this.state);
         let obj = {};
         //{CN: 5, MX: 5, TX: 5}
         countriesCodesArray.forEach(countryCode => (obj[countryCode] = 5));
@@ -45,8 +47,8 @@ class Map extends React.Component {
     };
 
     render() {
-        // console.log(this.state.data);
-        const { countriesNamesArray, color } = this.state;
+	    // console.log(this.state.data);
+	const { countriesNamesArray, color } = this.state;
         return (
             <div>
             <VectorMap
@@ -75,19 +77,21 @@ class Map extends React.Component {
                         "stroke-opacity": 0
                 },
                     selected: {
-                        fill: "var(--fontColor)" // color for the clicked country
+                        fill:  "#da4032" // color for the clicked country
                     },
             }}
             regionsSelectable={false}
-            series={{
+	    series={
+		{
                 regions: [
                     {
                         values: this.state.data, // this is the map data
-                        scale: ["var(--fontColor)", color], // your color game's here
+                        scale: ["#da4032", color], // your color game's here
                         normalizeFunction: "polynomial"
                     }
                 ]
-            }}
+		}}
+	    
             />
             <div>
             {countriesNamesArray.map((country, i) => (

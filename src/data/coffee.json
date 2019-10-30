@@ -1,0 +1,23 @@
+[
+  {
+    "country": "Kenya",
+    "region": "Nyeri",
+    "producer": "Uhuru Kenyatta",
+    "description": "very tasty coffee yumyumyum",
+    "price": 10
+  },
+  {
+    "country": "Colombia",
+    "region": "",
+    "producer": "Pablo Escobar",
+    "description": "even tastier coffee yesyesyes",
+    "price": 45
+  },
+  {
+    "country": "Ethiopia",
+    "region": "Geisha",
+    "producer": "Gabre Selassie",
+    "description": "bestest asty coffee",
+    "price": 32
+  }
+]
