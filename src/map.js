@@ -1,26 +1,20 @@
 import React from "react";
 import { VectorMap } from "react-jvectormap";
 import data from "./data/coffee.json";
-const { getName, getCode } = require("country-list");
+const { getCode } = require("country-list");
 
 class Map extends React.Component {
     state = {
-	countriesCodesArray: [... new Set(data.map(item => getCode(item.country)))],
-        countriesNamesArray: [... new Set(data.map(item => item.country))],
-        data: {},
-        color: "#da4032"
+	countriesCodesArray: [...new Set(data.map(item => getCode(item.country)))],
+	countriesNamesArray: [...new Set(data.map(item => item.country))],
+	countriesMarkersArray: [...new Set(data.map(function (item) {return {latLng: [item.lng, item.lat], name: item.country + ": " + item.producer}}))]
     };
 
     render() {
-	    // console.log(this.state.data);
-	const { countriesNamesArray, color } = this.state;
+	console.log(this.state);
         return (
 	    <div>
-		    <div class="coffeeListDiv">Our coffees at the moment:<ul class="coffeeListUl"> 
-            	{countriesNamesArray.map((country, i) => (
-               	<li key={i}>{country}</li>
-		))}</ul>
-            </div>
+		<div class="coffeeListDiv">Coffees of the moment:</div>
 
             <VectorMap
             map={"world_mill"}
@@ -52,8 +46,21 @@ class Map extends React.Component {
                     selected: {
                         fill:  "var(--fontColor)" // color for the clicked country
                     },
-            }}
-	    selectedRegions={[... new Set(data.map(item => getCode(item.country)))]}
+	    }}
+	    onRegionTipShow={function (e, el, code) {
+            e.preventDefault();
+	    }}	
+    	    onMarkerTipShow={function (e, el, code) {
+            e.preventDefault();
+	    }}
+
+	    selectedRegions={this.state.countriesCodesArray}
+	    markers={this.state.countriesMarkersArray}
+	    labels={{
+        	markers: {
+			render: index => this.state.countriesMarkersArray[index].name
+		}}
+		    }
             />
                        </div>
         );

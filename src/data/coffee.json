@@ -2,6 +2,8 @@
   {
     "country": "Kenya",
     "region": "Nyeri",
+    "lng": -0.437809,
+    "lat": 36.957680,
     "producer": "Uhuru Kenyatta",
     "description": "very tasty coffee yumyumyum",
     "price": 10
@@ -9,6 +11,8 @@
   {
     "country": "Colombia",
     "region": "",
+    "lng": 3.720608,
+    "lat": -70.925007,
     "producer": "Pablo Escobar",
     "description": "even tastier coffee yesyesyes",
     "price": 45
@@ -16,6 +20,8 @@
   {
     "country": "Ethiopia",
     "region": "Geisha",
+    "lng": 7.731555,
+    "lat": 35.863164,
     "producer": "Gabre Selassie",
     "description": "bestest asty coffee",
     "price": 32

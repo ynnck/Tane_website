@@ -11,11 +11,14 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 function App() {
-    return (
+	return (
         <div className="App">
             <header className="App-header">
                 <p>Tane roasters collective</p>
-            </header>
+	</header>
+	<div id="overlay">
+		test
+	</div>
             
             <CoffeeMap />  
             <footer className="App-footer">
