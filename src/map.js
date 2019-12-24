@@ -1,17 +1,14 @@
 import React from "react";
 import { VectorMap } from "react-jvectormap";
-import data from "./data/coffee.json";
-const { getCode } = require("country-list");
+
 
 class Map extends React.Component {
-    state = {
-	countriesCodesArray: [...new Set(data.map(item => getCode(item.country)))],
-	countriesNamesArray: [...new Set(data.map(item => item.country))],
-	countriesMarkersArray: [...new Set(data.map(function (item) {return {latLng: [item.lng, item.lat], name: item.country + ": " + item.producer}}))]
-    };
 
-    render() {
-	console.log(this.state);
+	selectMarker = (event, code) => {this.props.callbackFromParent(code)}
+	
+
+	render() {
+	       console.log(this.props.data);
         return (
 	    <div>
 		<div class="coffeeListDiv">Coffees of the moment:</div>
@@ -54,13 +51,14 @@ class Map extends React.Component {
             e.preventDefault();
 	    }}
 
-	    selectedRegions={this.state.countriesCodesArray}
-	    markers={this.state.countriesMarkersArray}
+	    selectedRegions={this.props.data.countriesCodesArray}
+	    markers={this.props.data.countriesMarkersArray}
 	    labels={{
         	markers: {
-			render: index => this.state.countriesMarkersArray[index].name
+			render: index => this.props.data.countriesMarkersArray[index].name
 		}}
 		    }
+	    onMarkerClick={this.selectMarker}
             />
                        </div>
         );
